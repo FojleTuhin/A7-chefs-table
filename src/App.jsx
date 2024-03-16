@@ -1,7 +1,46 @@
 
+import { useEffect } from 'react'
 import './App.css'
+import { data } from 'autoprefixer'
+import { useState } from 'react'
+import Items from './Items';
 
 function App() {
+
+  const [items, setItems] = useState([]);
+  const [cart, setCart] = useState([]);
+
+
+  useEffect(() => {
+    fetch("./fakeData.json")
+      .then(res => res.json())
+      .then(data => {
+        setItems(data);
+      })
+  }, [])
+
+
+  const handleCook = (item) => {
+
+
+    const isExist = cart.find(cart => cart.recipe_id == item.recipe_id);
+    if (!isExist) {
+      setCart([...cart, item])
+    }
+    else {
+      alert('Already Exist')
+    }
+  }
+
+
+const handlePreparing=(id)=>{
+const newItem= cart.filter(item=> item.recipe_id!= id.recipe_id);
+setCart(newItem)}
+
+
+
+
+
 
   return (
     <>
@@ -14,6 +53,8 @@ function App() {
             </div>
             <div>
               <ul className='flex gap-12'>
+               
+
                 <li>Home</li>
                 <li>Recipe</li>
                 <li>About</li>
@@ -54,43 +95,20 @@ function App() {
 
               {/* card start from here */}
 
+              {
+                items.map(item => <Items
+                  key={item.recipe_id}
+                  item={item} handleCook={handleCook}>
 
-              <div className=" w-80 border border-gray-400 rounded-2xl">
-                <figure className="px-4 pt-4">
-                  <img src="https://media.cnn.com/api/v1/images/stellar/prod/220921081426-04-chinese-foods-ziao-long-bao.jpg?c=original&q=h_618,c_fill" alt="Shoes" className="rounded-xl" />
-                </figure>
-                <div className="card-body">
-                  <p className='text-xl font-semibold'>Spaghetti Bologneses</p>
-                  <p className='font-medium mt-4 text-gray-500'>Classic Italian pasta dish with savory meat sauce.</p>
-                  <hr className='mt-4 mb-6' />
-                  <p className='text-xl font-medium mb-4'>Ingredients: 6</p>
-                  <ul className='list-disc text-[#878787]'>
-                    <li className=''>500g ground beefs</li>
-                    <li>1 onion, chopped</li>
-                    <li>2 cloves garlic, minced</li>
-                  </ul>
-                  <hr className='mt-4 mb-6' />
-                  <div className='flex justify-between'>
-                    <div className='flex gap-4'>
-                      <img src="/src/assets/Frame.png" alt="" />
-                      <p>30 mins</p>
-                    </div>
-                    <div className='flex gap-4'>
-                      <img src="/src/assets/Frame (1).png" alt="" />
-                      <p>600 calories</p>
-                    </div>
-                  </div>
-                  <button className="btn bg-[#0BE58A] border-none rounded-full mt-6">Want to Cook</button>
+                </Items>)
+              }
 
 
-
-                </div>
-              </div>
 
             </div>
             <div className='right-div'>
               <div className='border border-gray-400 rounded-2xl p-4 w-full'>
-                <p className='text-2xl font-semibold text-center'>Want to cook: 01</p>
+                <p className='text-2xl font-semibold text-center'>Want to cook: {cart.length}</p>
                 <hr className='mt-4 mb-6' />
 
                 <div className='w-full'>
@@ -102,14 +120,19 @@ function App() {
                       <th className='w-[80px]'>Calories</th>
                       <th className='w-[100px]'></th>
                     </tr>
-                    <tr className='bg-gray-100 p-3'>
-                      <td>1</td>
-                      <td>Chicken Caesar Salad</td>
-                      <td>20 minutes</td>
-                      <td>400 calories</td>
-                      <td><button className="btn bg-[#0BE58A] border-none rounded-full">Preparing</button></td>
+                    {
+                      cart.map((item, index) => (
 
-                    </tr>
+
+                        <tr className='bg-gray-100 p-3'>
+                          <td>{index+1}</td>
+                          <td>{item.recipe_name}</td>
+                          <td>{item.preparing_time}</td>
+                          <td>{item.calories}</td>
+                          <td><button onClick={()=>handlePreparing(item)} className="btn bg-[#0BE58A] border-none rounded-full">Preparing</button></td>
+                        </tr>
+                      ))
+                    }
                   </table>
 
                   <div className='text-center font-semibold mt-8 text-2xl'>Currently cooking: 02</div>
@@ -127,13 +150,7 @@ function App() {
                       <td>400 calories</td>
 
                     </tr>
-                    <tr className='bg-gray-100 p-3'>
-                      <td>1</td>
-                      <td>Chicken Caesar Salad</td>
-                      <td>20 minutes</td>
-                      <td>400 calories</td>
-
-                    </tr>
+                    
                   </table>
 
                   <div className='mt-8 flex justify-between mb-4'>
