@@ -81,7 +81,7 @@ function App() {
           </nav>
         </header>
         <main>
-          <div className='bg'>
+          <div className='bg bg-cover bg-no-repeat'>
             <p className='w-4/5 text-white text-center text-5xl m-auto pt-32 font-bold'>Discover an exceptional cooking class tailored for you!</p>
 
             <p className='w-5/6 text-white text-center m-auto font-medium mt-6 mb-10'>Learn and Master Basic Programming, Data Structures, Algorithm, OOP, Database and solve 500+ coding problems to become an exceptionally well world-class Programmer.</p>
@@ -97,7 +97,7 @@ function App() {
 
           <div className='mt-24'>
             <p className='text-center font-semibold text-4xl'>Our Recipes</p>
-            <p className='text-center w-3/5 m-auto mt-6 mb-12'>Lorem ipsum dolor sit amet consectetur. Proin et feugiat senectus vulputate netus pharetra rhoncus. Eget urna volutpat curabitur elementum mauris aenean neque. </p>
+            <p className='text-center w-3/5 m-auto mt-6 mb-12'>First, let me just say that I hate cooking. There’s work on either end, usually while hungry on the one side and lazy on the other. To me, the only thing worse than cooking is all the dishes you have to do afterwards. </p>
           </div>
 
 
@@ -144,7 +144,7 @@ function App() {
                     }
                   </table>
 
-                  <div className='text-center font-semibold mt-8 text-2xl'>Currently cooking:{preparing.length}</div>
+                  <div className='text-center font-semibold mt-12 text-2xl mb-6 '>Currently cooking:{preparing.length}</div>
                   <table className='border-spacing-4'>
                     <tr className=' text-left gap-4'>
                       <th className='w-[50px]'></th>
