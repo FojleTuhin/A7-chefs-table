@@ -43,8 +43,32 @@ function App() {
           </div>
 
 
+          <div className='mt-24'>
+            <p className='text-center font-semibold text-4xl'>Our Recipes</p>
+            <p className='text-center w-4/5 m-auto mt-6'>Lorem ipsum dolor sit amet consectetur. Proin et feugiat senectus vulputate netus pharetra rhoncus. Eget urna volutpat curabitur elementum mauris aenean neque. </p>
+          </div>
+
+
           <div>
-            
+            <div className='left div grid grid-cols-2'>
+              {/* card start from here */}
+              <div className="card w-96 bg-base-100 shadow-xl">
+                <figure className="px-6 pt-6">
+                  <img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" className="rounded-xl" />
+                </figure>
+                <div className="card-body items-center text-center">
+                  <h2 className="card-title">Shoes!</h2>
+                  <p>If a dog chews shoes whose shoes does he choose?</p>
+                  <div className="card-actions">
+                    <button className="btn btn-primary">Buy Now</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div className='right-div'>
+
+            </div>
           </div>
 
         </main>
