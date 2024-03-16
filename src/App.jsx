@@ -49,12 +49,13 @@ function App() {
           </div>
 
 
-          <div>
+          <div className='flex'>
             <div className='left div grid grid-cols-2'>
+
               {/* card start from here */}
               <div className="card w-96 bg-base-100 shadow-xl">
                 <figure className="px-6 pt-6">
-                  <img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" className="rounded-xl" />
+                  <img src="https://media.cnn.com/api/v1/images/stellar/prod/220921081426-04-chinese-foods-ziao-long-bao.jpg?c=original&q=h_618,c_fill" alt="Shoes" className="rounded-xl" />
                 </figure>
                 <div className="card-body items-center text-center">
                   <h2 className="card-title">Shoes!</h2>
