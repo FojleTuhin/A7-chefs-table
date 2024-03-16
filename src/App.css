@@ -1,5 +1,5 @@
 .bg{
-    background-image: url('/src/assets/Rectangle\ 1.png');
+    background-image: url('./src/assets/Rectangle\ 1.png');
     border: none;
     border-radius: 24px;
 }

@@ -74,7 +74,7 @@ function App() {
             </div>
             <div className='flex gap-4'>
               <input type="text" placeholder="Search" className="input input-bordered input-accent w-full max-w-xs" />
-              <img src="/src/assets/profile.png" alt="" />
+              <img src="./src/assets/profile.png" alt="" />
 
             </div>
 
