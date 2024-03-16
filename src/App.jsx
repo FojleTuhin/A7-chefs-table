@@ -1,9 +1,11 @@
 
 import { useEffect } from 'react'
 import './App.css'
-import { data } from 'autoprefixer'
 import { useState } from 'react'
 import Items from './Items';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
 
@@ -20,6 +22,7 @@ function App() {
   }, [])
 
 
+
   const handleCook = (item) => {
 
 
@@ -28,22 +31,30 @@ function App() {
       setCart([...cart, item])
     }
     else {
-      alert('Already Exist')
+      toast.warning("Item already exists in your cart.");
+
     }
   }
 
 
-const handlePreparing=(id)=>{
-const newItem= cart.filter(item=> item.recipe_id!= id.recipe_id);
-setCart(newItem)}
+  const handlePreparing = (id) => {
+    const newItem = cart.filter(item => item.recipe_id != id.recipe_id);
+    setCart(newItem);
 
+    const addItem = cart.find(item => item.recipe_id == id.recipe_id)
+    console.log(addItem)
+    // setPreparing([...preparing, addItem])
 
+    // console.log(preparing)
 
+  }
 
 
 
   return (
     <>
+
+        <ToastContainer />
 
       <div className='w-[95%] m-auto'>
         <header>
@@ -53,7 +64,7 @@ setCart(newItem)}
             </div>
             <div>
               <ul className='flex gap-12'>
-               
+
 
                 <li>Home</li>
                 <li>Recipe</li>
@@ -122,14 +133,12 @@ setCart(newItem)}
                     </tr>
                     {
                       cart.map((item, index) => (
-
-
-                        <tr className='bg-gray-100 p-3'>
-                          <td>{index+1}</td>
-                          <td>{item.recipe_name}</td>
-                          <td>{item.preparing_time}</td>
-                          <td>{item.calories}</td>
-                          <td><button onClick={()=>handlePreparing(item)} className="btn bg-[#0BE58A] border-none rounded-full">Preparing</button></td>
+                        <tr key={item.recipe_id} className='bg-gray-100 p-3'>
+                          <td >{index + 1}</td>
+                          <td >{item.recipe_name}</td>
+                          <td >{item.preparing_time}</td>
+                          <td >{item.calories}</td>
+                          <td ><button onClick={() => handlePreparing(item)} className="btn bg-[#0BE58A] border-none rounded-full">Preparing</button></td>
                         </tr>
                       ))
                     }
@@ -143,14 +152,17 @@ setCart(newItem)}
                       <th className='w-[100px]'>Time</th>
                       <th className='w-[100px]'>Calories</th>
                     </tr>
-                    <tr className='bg-gray-100 p-3 pb-4'>
+
+
+
+                    {/* <tr className='bg-gray-100 p-3 pb-4'>
                       <td>1</td>
                       <td>Chicken Caesar Salad</td>
                       <td>20 minutes</td>
                       <td>400 calories</td>
 
-                    </tr>
-                    
+                    </tr> */}
+
                   </table>
 
                   <div className='mt-8 flex justify-between mb-4'>

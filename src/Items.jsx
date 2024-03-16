@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
 
 const Items = ({item, handleCook}) => {
 
-    const ingred=item.ingredients;
     return (
         <div>
             <div className=" w-80 border border-gray-400 rounded-2xl">
@@ -16,9 +14,12 @@ const Items = ({item, handleCook}) => {
                   <hr className='mt-4 mb-6' />
                   <p className='text-xl font-medium mb-4'>Ingredients: 6</p>
                   <ul className='list-disc text-[#878787]'>
-                    <li>500g ground beefs</li>
-                    <li>1 onion, chopped</li>
-                    <li>2 cloves garlic, minced</li>
+                    {
+                        item.ingredients.map((check)=>(
+                            <li key={check}>{check}</li>
+                        )).slice(0,3)
+                    }
+                   
                     
                   </ul>
                   <hr className='mt-4 mb-6' />
@@ -33,6 +34,7 @@ const Items = ({item, handleCook}) => {
                     </div>
                   </div>
                   <button onClick={()=>handleCook(item)} className="btn bg-[#0BE58A] border-none rounded-full mt-6">Want to Cook</button>
+                  
 
 
 
