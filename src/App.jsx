@@ -11,6 +11,7 @@ function App() {
 
   const [items, setItems] = useState([]);
   const [cart, setCart] = useState([]);
+  const [preparing, setPreparing]=useState([]);
 
 
   useEffect(() => {
@@ -32,7 +33,6 @@ function App() {
     }
     else {
       toast.warning("Item already exists in your cart.");
-
     }
   }
 
@@ -42,7 +42,7 @@ function App() {
     setCart(newItem);
 
     const addItem = cart.find(item => item.recipe_id == id.recipe_id)
-    console.log(addItem)
+    setPreparing([...preparing, addItem])
     // setPreparing([...preparing, addItem])
 
     // console.log(preparing)
@@ -144,7 +144,7 @@ function App() {
                     }
                   </table>
 
-                  <div className='text-center font-semibold mt-8 text-2xl'>Currently cooking: 02</div>
+                  <div className='text-center font-semibold mt-8 text-2xl'>Currently cooking:{preparing.length}</div>
                   <table className='border-spacing-4'>
                     <tr className=' text-left gap-4'>
                       <th className='w-[50px]'></th>
@@ -153,15 +153,19 @@ function App() {
                       <th className='w-[100px]'>Calories</th>
                     </tr>
 
+                    {
+                      preparing.map((item, index) => (
+                        <tr key={item.recipe_id} className='bg-gray-100 p-3 pb-4'>
+                          <td className='h-14' >{index + 1}</td>
+                          <td >{item.recipe_name}</td>
+                          <td >{item.preparing_time}</td>
+                          <td >{item.calories}</td>
+                          
+                        </tr>
+                      ))
+                    }
 
-
-                    {/* <tr className='bg-gray-100 p-3 pb-4'>
-                      <td>1</td>
-                      <td>Chicken Caesar Salad</td>
-                      <td>20 minutes</td>
-                      <td>400 calories</td>
-
-                    </tr> */}
+                    
 
                   </table>
 
