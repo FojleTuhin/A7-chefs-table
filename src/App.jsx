@@ -72,9 +72,9 @@ function App() {
                 <li>Search</li>
               </ul>
             </div>
-            <div className='flex gap-4 '>
+            <div className='flex gap-4'>
               <label className="input input-bordered flex items-center gap-2">
-                <input type="text" className="grow" placeholder="Search" />
+                <input type="text" className="grow w-2/4" placeholder="Search" />
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
               </label>              
               <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTsQZcap2WIgrWrKyQfrmuEBE11cGUFa-InjCrTWhfofgjyvIqG " className='w-12 hidden md:block' alt="" />
@@ -89,7 +89,7 @@ function App() {
 
             <p className='w-5/6 text-white text-center m-auto font-medium mt-6 mb-10'>Learn and Master Basic Programming, Data Structures, Algorithm, OOP, Database and solve 500+ coding problems to become an exceptionally well world-class Programmer.</p>
 
-            <div className='w-96 m-auto flex justify-around pb-32'>
+            <div className='w-full md:w-96 m-auto flex justify-around pb-32'>
               <button className="btn bg-[#0BE58A] border-none rounded-full">Explore now</button>
               <button className="btn btn-outline border-white btn-success !text-white rounded-full">Our feedback</button>
             </div>
